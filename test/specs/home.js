@@ -14,6 +14,7 @@ describe('Home page', () => {
     it('Navigate to the URL and assert the URL',async () => {
         await browser.url('/about');
         const urlTitle = await browser.getUrl();
-        await expect(urlTitle).toEqual("https://practice.automationbro.com/about/")
+        await expect(urlTitle).toEqual('https://practice.automationbro.com/about/')
+        //await expect(browser).toHaveUrl('https://practice.automationbro.com/about/') // this do not require browser.getUrl().
     });
 });
