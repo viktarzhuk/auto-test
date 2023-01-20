@@ -31,7 +31,7 @@ describe('Home page', () => {
         await expect(browser).not.toHaveUrlContaining('#get-started')
     });
 
-    it.only('Find element, get it text and assert the text',async () => {
+    it('Find element, get it text and assert the text',async () => {
         await browser.url('/');
         await expect($('.elementor-widget-container h1')).toHaveText('Think different. Make different.') // we can do it using getText() command for the element and then assert
     });
