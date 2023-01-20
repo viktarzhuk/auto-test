@@ -4,7 +4,8 @@
   "description": "Repo with auto scripts",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "wdio": "wdio run ./wdio.conf.js"
   },
   "repository": {
     "type": "git",
@@ -19,5 +20,12 @@
   "homepage": "https://github.com/viktarzhuk/auto-test#readme",
   "dependencies": {
     "@wdio/cli": "^8.2.0"
+  },
+  "devDependencies": {
+    "@wdio/local-runner": "^8.2.0",
+    "@wdio/mocha-framework": "^8.2.0",
+    "@wdio/spec-reporter": "^8.1.2",
+    "chromedriver": "^109.0.0",
+    "wdio-chromedriver-service": "^8.0.1"
   }
 }
