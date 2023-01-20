@@ -30,5 +30,9 @@ describe('Home page', () => {
         await $("img[alt='Practice E-Commerce Site']").click();
         await expect(browser).not.toHaveUrlContaining('#get-started')
     });
-    
+
+    it.only('Find element, get it text and assert the text',async () => {
+        await browser.url('/');
+        await expect($('.elementor-widget-container h1')).toHaveText('Think different. Make different.')
+    });
 });
