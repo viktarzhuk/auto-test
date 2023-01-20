@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/viktarzhuk/auto-test/issues"
   },
-  "homepage": "https://github.com/viktarzhuk/auto-test#readme"
+  "homepage": "https://github.com/viktarzhuk/auto-test#readme",
+  "dependencies": {
+    "@wdio/cli": "^8.2.0"
+  }
 }
