@@ -18,9 +18,16 @@ describe('Home page', () => {
         //await expect(browser).toHaveUrl('https://practice.automationbro.com/about/') // this do not require browser.getUrl().
     });
 
-    it.only('Clicking the button and asert the URl contains correct title',async () => {
+    it('Clicking the button and asert the URl contains correct title',async () => {
         await browser.url('/');
         await $('#get-started').click()
         await expect(browser).toHaveUrlContaining('#get-started')
+    });
+
+    it.only('Clikcing the page logo and assert the url NOT contain sertain text',async () => {
+        await browser.url('/');
+        await $('#get-started').click();
+        await $("img[alt='Practice E-Commerce Site']").click();
+        await expect(browser).not.toHaveUrlContaining('#get-started')
     });
 });
