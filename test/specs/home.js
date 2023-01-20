@@ -17,4 +17,10 @@ describe('Home page', () => {
         await expect(urlTitle).toEqual('https://practice.automationbro.com/about/')
         //await expect(browser).toHaveUrl('https://practice.automationbro.com/about/') // this do not require browser.getUrl().
     });
+
+    it.only('Clicking the button and asert the URl contains correct title',async () => {
+        await browser.url('/');
+        await $('#get-started').click()
+        await expect(browser).toHaveUrlContaining('#get-started')
+    });
 });
