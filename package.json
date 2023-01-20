@@ -19,7 +19,7 @@
   },
   "homepage": "https://github.com/viktarzhuk/auto-test#readme",
   "dependencies": {
-    
+    "@wdio/cli": "^8.2.0"
   },
   "devDependencies": {
     "@wdio/local-runner": "^8.2.0",
