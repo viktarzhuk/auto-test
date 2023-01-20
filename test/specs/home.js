@@ -24,10 +24,11 @@ describe('Home page', () => {
         await expect(browser).toHaveUrlContaining('#get-started')
     });
 
-    it.only('Clikcing the page logo and assert the url NOT contain sertain text',async () => {
+    it('Clikcing the page logo and assert the url NOT contain sertain text',async () => {
         await browser.url('/');
         await $('#get-started').click();
         await $("img[alt='Practice E-Commerce Site']").click();
         await expect(browser).not.toHaveUrlContaining('#get-started')
     });
+    
 });
