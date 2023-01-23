@@ -18,7 +18,7 @@ describe('Blog page', () => {
             const text = await item.getText();
             await expect(text.length).toBeGreaterThan(10);
         }
-        await expect(recentPosts).toHaveLength(5)
+        await expect(recentPosts).toHaveLength(5);
 
     });
 });
