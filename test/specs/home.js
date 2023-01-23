@@ -1,4 +1,4 @@
-
+import HomePage from '../pages/home-page';
 
 // Practice E-Commerce Site – Automation Bro
 describe('Home page', () => {
@@ -7,7 +7,7 @@ describe('Home page', () => {
     });
 
     it('Navigate to the home page and assert the page title',async () => {
-        await browser.url('/');
+        await HomePage.open();
         await expect(browser).toHaveTitle('Practice E-Commerce Site – Automation Bro')
     });
 
@@ -19,13 +19,13 @@ describe('Home page', () => {
     });
 
     it('Clicking the button and asert the URl contains correct title',async () => {
-        await browser.url('/');
+        await HomePage.open();
         await $('#get-started').click()
         await expect(browser).toHaveUrlContaining('#get-started')
     });
 
     it('Clikcing the page logo and assert the url NOT contain sertain text',async () => {
-        await browser.url('/');
+        await HomePage.open();
         await $('#get-started').click();
         await $("img[alt='Practice E-Commerce Site']").click();
         await expect(browser).not.toHaveUrlContaining('#get-started')
