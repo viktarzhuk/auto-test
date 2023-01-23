@@ -20,7 +20,7 @@ describe('Home page', () => {
 
     it('Clicking the button and asert the URl contains correct title',async () => {
         await HomePage.open();
-        await $('#get-started').click()
+        await HomePage.btnGetStarted.click()
         await expect(browser).toHaveUrlContaining('#get-started')
     });
 
