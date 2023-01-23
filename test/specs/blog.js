@@ -5,6 +5,7 @@ describe('Blog page', () => {
     
     it('Get the list of recent posts and assert the list length',async () => {
         await browser.url('/');
+        await $("#primary-menu").waitForDisplayed();
         const navMenu = await $$("#primary-menu [id*='menu']");
         for (const link of navMenu) {
             if (await link.getText() === 'Blog') {

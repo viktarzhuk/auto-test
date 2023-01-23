@@ -5,6 +5,7 @@ describe('Navigation menu', () => {
     
     it('Get the text of multiple elements of the page and assert them',async () => {
        await browser.url('/')
+       await $('#menu-item-489').waitForClickable()
         const navLinks = await $$("#primary-menu [id*='menu']");
         const expectedTitles = [ 
             'Home',
