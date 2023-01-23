@@ -5,5 +5,8 @@
             "@wdio/globals/types",
             "@wdio/mocha-framework"
         ]
-    }
+    },
+    "exclude": [
+        "node_modules"
+    ]
 }
