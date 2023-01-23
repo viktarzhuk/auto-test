@@ -18,10 +18,11 @@
     "url": "https://github.com/viktarzhuk/auto-test/issues"
   },
   "homepage": "https://github.com/viktarzhuk/auto-test#readme",
-  "dependencies": {
-    
-  },
   "devDependencies": {
+    "@babel/cli": "^7.20.7",
+    "@babel/core": "^7.20.12",
+    "@babel/preset-env": "^7.20.2",
+    "@babel/register": "^7.18.9",
     "@wdio/local-runner": "^8.2.0",
     "@wdio/mocha-framework": "^8.2.0",
     "@wdio/spec-reporter": "^8.1.2",
