@@ -1,6 +1,10 @@
 import NavComponent from '../pages/components/nav-comp';
 
 class BlogPage {
+    open () {
+        return browser.url('/');
+    }
+
     get navMenu () {
         return $("#primary-menu");
     }
