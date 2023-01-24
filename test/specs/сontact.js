@@ -7,6 +7,7 @@ describe('Contact Form', () => {
     
     it('Fill in the contact form and assert the alert message of success',async () => {
         await ContactPage.open();
+        // await browser.url('/');
         const navMenu = await ContactPage.NavComponent.linksNavMenu;
         for (const link of navMenu) {
             if (await link.getText() === 'Contact') {

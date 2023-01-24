@@ -1,10 +1,7 @@
-import NavComponent from '../pages/components/nav-comp';
+import NavComponent from './components/nav-comp';
 
 class ContactPage {
-    open () {
-        return browser.url('/');
-    }
-
+    
     get NavComponent () {
         return NavComponent;
     }
@@ -33,11 +30,16 @@ class ContactPage {
         return $("[role='alert']");
     }
 
+    open () {
+        return browser.url('/');
+    }
+
     submitContactForm(name, email, phone, message) {
         this.inputName.setValue(name);
         this.inputEmail.setValue(email);
         this.inputPhone.setValue(phone);
         this.inputMessage.setValue(message);
+        this.submitFormBtn.waitForClickable();
         this.submitFormBtn.click();
     }
 
