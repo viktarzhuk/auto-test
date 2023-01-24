@@ -1,3 +1,5 @@
+import HomePage from '../pages/home-page';
+
 describe('Navigation menu', () => {
     beforeEach(async function() {
         await browser.maximizeWindow();
@@ -8,12 +10,12 @@ describe('Navigation menu', () => {
        //await $('#menu-item-489').waitForClickable()
        //using waitUnitl
        await browser.waitUntil(async function () {
-            const homeText = await $('#menu-item-489').getText()
+            const homeText = await HomePage.NavComponent.firstNavMenuElem.getText()
             return homeText === "Home"; // return true or false, so waiting will be untill the return = true
        }, {
         timeoutMsg: 'Could not find "Home" element on the page' // adding error message in case the element won't be found 
        })
-        const navLinks = await $$("#primary-menu [id*='menu']");
+        const navLinks = await HomePage.NavComponent.linksNavMenu;
         const expectedTitles = [ 
             'Home',
             'About',
