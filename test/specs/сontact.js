@@ -14,7 +14,7 @@ describe('Contact Form', () => {
                 await link.click()
             }
         }
-        ContactPage.submitContactForm("Viktar", "admin@mail.com", "+500514645", "This is test message for testing");
+        await ContactPage.submitContactForm("Viktar", "admin@mail.com", "+500514645", "This is test message for testing");
         await ContactPage.alertMsg.waitForDisplayed({timeout: 8000});
         await expect(ContactPage.alertMsg).toHaveText('Thanks for contacting us! We will be in touch with you shortly');
 

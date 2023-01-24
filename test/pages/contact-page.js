@@ -34,13 +34,13 @@ class ContactPage {
         return browser.url('/');
     }
 
-    submitContactForm(name, email, phone, message) {
-        this.inputName.setValue(name);
-        this.inputEmail.setValue(email);
-        this.inputPhone.setValue(phone);
-        this.inputMessage.setValue(message);
-        this.submitFormBtn.waitForClickable();
-        this.submitFormBtn.click();
+    async submitContactForm(name, email, phone, message) {
+       await this.inputName.setValue(name);
+       await this.inputEmail.setValue(email);
+       await this.inputPhone.setValue(phone);
+       await this.inputMessage.setValue(message);
+       await this.submitFormBtn.waitForClickable();
+       await this.submitFormBtn.click();
     }
 
 }
