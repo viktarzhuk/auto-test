@@ -6,5 +6,9 @@ class HomePage {
     get btnGetStarted() {
         return $('#get-started')
     }
+
+    get logoBtn () {
+        return $("img[alt='Practice E-Commerce Site']")
+    }
 }
 export default new HomePage();

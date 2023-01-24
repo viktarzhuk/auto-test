@@ -15,7 +15,7 @@ describe('Home page', () => {
         await browser.url('/about');
         const urlTitle = await browser.getUrl();
         await expect(urlTitle).toEqual('https://practice.automationbro.com/about/') // toEqual assertion from Jest library
-        //await expect(browser).toHaveUrl('https://practice.automationbro.com/about/') // this do not require browser.getUrl().
+        //await expect(browser).toHaveUrl('https://practice.automationbro.com/about/') // this do not require browser.getUrl() before this step this action is inbuild.
     });
 
     it('Clicking the button and asert the URl contains correct title',async () => {
@@ -26,8 +26,8 @@ describe('Home page', () => {
 
     it('Clikcing the page logo and assert the url NOT contain sertain text',async () => {
         await HomePage.open();
-        await $('#get-started').click();
-        await $("img[alt='Practice E-Commerce Site']").click();
+        await HomePage.btnGetStarted.click();
+        await HomePage.logoBtn.click();
         await expect(browser).not.toHaveUrlContaining('#get-started')
     });
 
