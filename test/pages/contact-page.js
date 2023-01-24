@@ -30,8 +30,8 @@ class ContactPage {
         return $("[role='alert']");
     }
 
-    open () {
-        return browser.url('/');
+    async open () {
+        return await browser.url('/');
     }
 
     async submitContactForm(name, email, phone, message) {
