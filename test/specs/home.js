@@ -4,10 +4,10 @@ import HomePage from '../pages/home-page';
 describe('Home page', () => {
     beforeEach(async function() {
         browser.maximizeWindow()
+        await HomePage.open();
     });
 
     it('Navigate to the home page and assert the page title',async () => {
-        await HomePage.open();
         await expect(browser).toHaveTitle('Practice E-Commerce Site – Automation Bro')
     });
 
@@ -19,20 +19,17 @@ describe('Home page', () => {
     });
 
     it('Clicking the button and asert the URl contains correct title',async () => {
-        await HomePage.open();
         await HomePage.btnGetStarted.click()
         await expect(browser).toHaveUrlContaining('#get-started')
     });
 
     it('Clikcing the page logo and assert the url NOT contain sertain text',async () => {
-        await HomePage.open();
         await HomePage.btnGetStarted.click();
         await HomePage.logoBtn.click();
         await expect(browser).not.toHaveUrlContaining('#get-started')
     });
 
     it('Find element, get it text and assert the text',async () => {
-        await HomePage.open();
         await expect(HomePage.txtHeading).toHaveText('Think different. Make different.') // we can do it using getText() command for the element and then assert
     });
 });
