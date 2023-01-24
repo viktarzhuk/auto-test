@@ -10,5 +10,9 @@ class HomePage {
     get logoBtn () {
         return $("img[alt='Practice E-Commerce Site']")
     }
+
+    get txtHeading () {
+        return $('.elementor-widget-container h1')
+    }
 }
 export default new HomePage();

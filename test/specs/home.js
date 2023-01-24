@@ -33,6 +33,6 @@ describe('Home page', () => {
 
     it('Find element, get it text and assert the text',async () => {
         await HomePage.open();
-        await expect($('.elementor-widget-container h1')).toHaveText('Think different. Make different.') // we can do it using getText() command for the element and then assert
+        await expect(HomePage.txtHeading).toHaveText('Think different. Make different.') // we can do it using getText() command for the element and then assert
     });
 });
