@@ -1,4 +1,5 @@
 import ContactPage from '../pages/contact-page';
+import { faker } from '@faker-js/faker';
 
 describe('Contact Form', () => {
     beforeEach(async function () {
@@ -13,7 +14,7 @@ describe('Contact Form', () => {
                 await link.click()
             }
         }
-        await ContactPage.submitContactForm("Viktar", "admin@mail.com", "+500514645", "This is test message for testing");
+        await ContactPage.submitContactForm(faker.name.fullName(), faker.internet.email(), faker.phone.number(), faker.lorem.paragraphs(3))
         await ContactPage.alertMsg.waitForDisplayed({timeout: 8000});
         await expect(ContactPage.alertMsg).toHaveText('Thanks for contacting us! We will be in touch with you shortly');
     });
