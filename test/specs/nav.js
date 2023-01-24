@@ -6,7 +6,7 @@ describe('Navigation menu', () => {
     });
     
     it('Get the text of multiple elements of the page and assert them',async () => {
-       await browser.url('/')
+       await HomePage.open();
        //await $('#menu-item-489').waitForClickable()
        //using waitUnitl
        await browser.waitUntil(async function () {
