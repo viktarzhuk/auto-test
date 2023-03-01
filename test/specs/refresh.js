@@ -112,13 +112,18 @@ describe('Test to refresh the syntax', () => {
         await $('#button1').isDisplayed();
     });
 
-    it.only('Injection of JS code to make visible elements', async () => {
+    it('Injection of JS code to make visible elements', async () => {
         await browser.url('http://www.webdriveruniversity.com/Hidden-Elements/index.html');
         await browser.execute(() => {
             return document.getElementById('visibility-hidden').setAttribute('id', '')
         })
-
         await $('#button2').isDisplayed();
+    });
+
+    it('Waiting for loader to dissapear',async () => {
+        await browser.url('http://www.webdriveruniversity.com/Ajax-Loader/index.html');
+        
+        
     });
 
 
