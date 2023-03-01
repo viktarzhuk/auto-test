@@ -104,12 +104,21 @@ describe('Test to refresh the syntax', () => {
         await expect(clickCancel).toEqual('You pressed Cancel!')
     });
 
-    it.only('Injection of JS code into the page to make some elelements visible', async () => {
+    it('Injection of JS code into the page to make some elelements visible', async () => {
         await browser.url('http://www.webdriveruniversity.com/Hidden-Elements/index.html')
         await browser.execute(() => {
-             return //document.getElementById('not-displayed').setAttribute('id', '');
+              return document.getElementById("not-displayed").setAttribute("id", "")
         });
-        
+        await $('#button1').isDisplayed();
+    });
+
+    it.only('Injection of JS code to make visible elements', async () => {
+        await browser.url('http://www.webdriveruniversity.com/Hidden-Elements/index.html');
+        await browser.execute(() => {
+            return document.getElementById('visibility-hidden').setAttribute('id', '')
+        })
+
+        await $('#button2').isDisplayed();
     });
 
 
