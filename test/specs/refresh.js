@@ -63,7 +63,7 @@ describe('Test to refresh the syntax', () => {
         await expect(placeholder).toEqual('First Name');
     });
 
-    it.only('Navigate to login form page and assert the page title', async () => {
+    it('Navigate to login form page and assert the page title', async () => {
         await browser.url('http://www.webdriveruniversity.com/');
         await $('#login-portal').click()
         await browser.switchWindow('http://www.webdriveruniversity.com/Login-Portal/');
@@ -71,7 +71,46 @@ describe('Test to refresh the syntax', () => {
         await expect($('#text')).toBeDisplayed()
     });
 
+    it('Enter credentials and interact with browser alert window', async () => {
+        await browser.url('http://www.webdriveruniversity.com/');
+        await $('#login-portal').click()
+        await browser.switchWindow('http://www.webdriveruniversity.com/Login-Portal/');
+        await $('#text').setValue(faker.name.firstName());
+        await $('#password').setValue(faker.internet.password(8))
+        await $('#login-button').click()
+        await expect(await browser.getAlertText()).toBe('validation failed')
+        await browser.acceptAlert()
+    });
 
+    it('Navigate to button clicks page and assert page title', async () => {
+        await browser.url('http://www.webdriveruniversity.com/');
+        await $('#button-clicks').click()
+        await browser.switchWindow('http://www.webdriveruniversity.com/Click-Buttons/')
+        await expect(browser).toHaveTitle('WebDriver | Button Clicks')
+    });
+
+    it('Clicking buttons and interact with alerts', async () => {
+        await browser.url('http://www.webdriveruniversity.com/Popup-Alerts/index.html')
+        await $('#button1').click()
+        await browser.acceptAlert()
+        ///Next button
+        await $('#button4').click()
+        await browser.acceptAlert()
+        const clickOK = await $('#confirm-alert-text').getText()
+        await expect(clickOK).toEqual('You pressed OK!')
+        await $('#button4').click()
+        await browser.dismissAlert()
+        const clickCancel = await $('#confirm-alert-text').getText()
+        await expect(clickCancel).toEqual('You pressed Cancel!')
+    });
+
+    it.only('Injection of JS code into the page to make some elelements visible', async () => {
+        await browser.url('http://www.webdriveruniversity.com/Hidden-Elements/index.html')
+        await browser.execute(() => {
+             return document.getElementById('#not-displayed').setAttribute('id', '');
+        });
+        await browser.pause(3000)
+    });
 
 
 });
