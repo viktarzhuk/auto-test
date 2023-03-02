@@ -143,11 +143,10 @@ describe('Test to refresh the syntax', () => {
         await expect(browser).toHaveTitleContaining('WebDriver')
     });
 
-    it.only('Interaction with tables: getting data',async () => {
+    it('Interaction with tables: getting data',async () => {
         await browser.url('http://www.webdriveruniversity.com/Data-Table/index.html');
         await $('#t01').waitForDisplayed();
         const arr = await $$("//table[@id='t01']/tbody/tr/td")
-        console.log(arr.length)
         let actual = [];
         for (let i = 0; i < arr.length; i++) {
              actual.push(await arr[i].getText())
@@ -156,7 +155,45 @@ describe('Test to refresh the syntax', () => {
         await expect(actual).toEqual(expectedArr)
     });
         
+    it('Interaction with breadcrumbs: looping over and selecting one', async () => {
+        await browser.url('http://www.webdriveruniversity.com/Data-Table/index.html');
+        await $("//h2[text() = 'Breadcrumb']").waitForDisplayed();
+        const breadcrumbs = await $$('.breadcrumb-item');
+        for (const item of breadcrumbs) {
+            if(await item.getText() === 'About Us') {
+               await item.click()
+            }
+        }
+
+    });
         
+    it('Interaction with list of items: getting the text of all list items and compare with the expected number of items', async () => {
+        await browser.url('http://www.webdriveruniversity.com/Data-Table/index.html');
+        await $("//h2[text() = 'Lists']").waitForDisplayed();
+        const listItems = await $$(".traversal-drinks-list > li");
+        let actualItems = [];
+        let expectedNumbOfItems = 5;
+        for (let i = 0; i < listItems.length; i++) {
+            actualItems.push(await listItems[i].getText())
+        }
+        console.log(actualItems)
+        await expect(actualItems.length).toEqual(expectedNumbOfItems);
+    });
+
+    it.only('Interaction with autocomplete text field', async () => {
+        await browser.url('http://www.webdriveruniversity.com/Autocomplete-TextField/autocomplete-textfield.html');
+        await $('#myInput').setValue('A');
+        await $('#myInputautocomplete-list').waitForDisplayed()
+        const items = await $$('#myInputautocomplete-list > div');
+        for (let i = 0; i < items.length; i++) {
+            if(await items[i].getText() == 'Apple') {
+                await items[i].click()
+            }
+        }
+        await $('#submit-button').click();
+        
+    
+    });
         
         
         
