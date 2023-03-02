@@ -213,15 +213,6 @@ describe('Test to refresh the syntax', () => {
             } 
         }
     });
-        
-        
-        
-        
-
-    
-        
-
-    
 
 
 });
