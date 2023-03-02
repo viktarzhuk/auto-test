@@ -193,7 +193,7 @@ describe('Test to refresh the syntax', () => {
         await $('#submit-button').click();
     });
 
-    it.only('Date picker: interaction with calendar', async () => {
+    it('Date picker: interaction with calendar', async () => {
         await browser.url('http://www.webdriveruniversity.com/Datepicker/index.html');
         await $('#datepicker').waitForDisplayed();
         await $('.glyphicon ').click();
