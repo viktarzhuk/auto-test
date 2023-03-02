@@ -130,10 +130,42 @@ describe('Test to refresh the syntax', () => {
         await expect(headerText).toEqual('Well Done For Waiting....!!!')
     });
 
-    it.only('Interaction with iFrames', async () => {
+    it('Interaction with iFrames', async () => {
         await browser.url('http://www.webdriveruniversity.com/IFrame/index.html');
-        
+        const iFrame = await $('#frame');
+        await browser.switchToFrame(iFrame);
+        await $('#button-find-out-more').waitForClickable();
+        await $('#button-find-out-more').click();
+        await $('.modal-body').waitForDisplayed();
+        const bodyText = await $('.modal-body').getText();
+        await expect(bodyText).toEqual('Welcome to webdriveruniversity.com we sell a wide range of electrical goods such as laptops, game consoles, cameras...')
+        await browser.switchToParentFrame();
+        await expect(browser).toHaveTitleContaining('WebDriver')
     });
+
+    it.only('Interaction with tables: getting data',async () => {
+        await browser.url('http://www.webdriveruniversity.com/Data-Table/index.html');
+        await $('#t01').waitForDisplayed();
+        const arr = await $$("//table[@id='t01']/tbody/tr/td")
+        console.log(arr.length)
+        let actual = [];
+        for (let i = 0; i < arr.length; i++) {
+             actual.push(await arr[i].getText())
+        }
+        let expectedArr = ['John', 'Smith', '45', 'Jemma', 'Jackson', '94', 'Michael', 'Doe', '20']
+        await expect(actual).toEqual(expectedArr)
+    });
+        
+        
+        
+        
+        
+        
+
+    
+        
+
+    
 
 
 });
