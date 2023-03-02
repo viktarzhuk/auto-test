@@ -180,7 +180,7 @@ describe('Test to refresh the syntax', () => {
         await expect(actualItems.length).toEqual(expectedNumbOfItems);
     });
 
-    it.only('Interaction with autocomplete text field', async () => {
+    it('Interaction with autocomplete text field', async () => {
         await browser.url('http://www.webdriveruniversity.com/Autocomplete-TextField/autocomplete-textfield.html');
         await $('#myInput').setValue('A');
         await $('#myInputautocomplete-list').waitForDisplayed()
@@ -191,8 +191,27 @@ describe('Test to refresh the syntax', () => {
             }
         }
         await $('#submit-button').click();
-        
-    
+    });
+
+    it.only('Date picker: interaction with calendar', async () => {
+        await browser.url('http://www.webdriveruniversity.com/Datepicker/index.html');
+        await $('#datepicker').waitForDisplayed();
+        await $('.glyphicon ').click();
+        await $('.datepicker-switch').click();
+        const months = await $$('.month');
+        let monthsNumber = [];
+        for (let i = 0; i < months.length; i++) {
+            await monthsNumber.push(await months[i].getText())
+        }
+        await expect(monthsNumber.length).toEqual(12);
+        await $('//tbody/tr/td/span[1]').click();
+        const days = await $$('//tbody/tr/td');
+        for (let i = 0; i < days.length; i ++) {
+            if(await days[i].getText() == '1') {
+             await days[i].click() 
+             break;
+            } 
+        }
     });
         
         
