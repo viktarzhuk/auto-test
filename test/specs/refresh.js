@@ -122,7 +122,16 @@ describe('Test to refresh the syntax', () => {
 
     it('Waiting for loader to dissapear',async () => {
         await browser.url('http://www.webdriveruniversity.com/Ajax-Loader/index.html');
-        
+        const spinner = await $('#loader')  
+        await spinner.waitForDisplayed({reverse: true})
+        await $('#button1').click()
+        await $("#myModalClick").waitForDisplayed()
+        const headerText = await $(".modal-title").getText()
+        await expect(headerText).toEqual('Well Done For Waiting....!!!')
+    });
+
+    it.only('Interaction with iFrames', async () => {
+        await browser.url('http://www.webdriveruniversity.com/IFrame/index.html');
         
     });
 
