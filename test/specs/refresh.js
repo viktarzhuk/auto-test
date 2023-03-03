@@ -244,10 +244,9 @@ describe('Test to refresh the syntax', () => {
         await $("[value='lettuce']").click();
         await expect(await $("[value='lettuce']").isSelected()).toBe(true);
         await expect(await $("[value='cabbage']").isClickable()).toBe(false)
-        await browser.pause(3000)
     });
 
-    it.only('Checkboxes interactions', async () => {
+    it('Checkboxes interactions', async () => {
         await browser.url('http://www.webdriveruniversity.com/Dropdown-Checkboxes-RadioButtons/index.html');
         const checkboxes = await $$('[type=checkbox]');
         await expect(checkboxes.length).toBe(4);
@@ -257,8 +256,31 @@ describe('Test to refresh the syntax', () => {
                 expect(await item.toBeChecked()).toBe(true)
             }
         });
-        await browser.pause(3000)
+    });
 
+    it('Drag n Drop execution', async () => {
+        await browser.url('http://www.webdriveruniversity.com/Actions/index.html');
+        const element = await $('#draggable');
+        const target = await $('#droppable');
+        await element.dragAndDrop(target);
+        await expect(target).toHaveText('Dropped!');
+    });
+
+    it.only('Executing hover over elements in a sequence and asserting the browser alerts', async () => {
+        await browser.url('http://www.webdriveruniversity.com/Actions/index.html');
+        await $("//button[text()='Hover Over Me First!']").moveTo();
+        await $("//a[@class='list-alert'][1]").click();
+        await expect(await browser.getAlertText()).toBe('Well done you clicked on the link!');
+        await browser.acceptAlert();
+        await $("//button[text()='Hover Over Me Second!']").waitForClickable();
+        await $("//button[text()='Hover Over Me Second!']").moveTo()
+        await $("div:nth-of-type(2) > .dropdown-content > .list-alert").click()
+        await expect(await browser.getAlertText()).toBe('Well done you clicked on the link!');
+        await browser.acceptAlert();
+        await $("//button[text()='Hover Over Me Third!']").moveTo();
+        await $('div:nth-of-type(3) > .dropdown-content >  .list-alert').click();
+        await expect(await browser.getAlertText()).toBe('Well done you clicked on the link!');
+        await browser.acceptAlert();
     });
 
 
