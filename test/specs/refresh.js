@@ -214,7 +214,7 @@ describe('Test to refresh the syntax', () => {
         }
     });
 
-    it.only('Hover over element on the page', async () => {
+    it('Hover over element on the page', async () => {
         await browser.url('http://www.webdriveruniversity.com/Scrolling/index.html')
         await $("//h1[text()='Scroll to me first!']").moveTo();
         await expect(await $('#zone1')).toHaveText('Well done for scrolling to me!');
@@ -224,9 +224,41 @@ describe('Test to refresh the syntax', () => {
         await expect($('#zone2-entries')).toHaveText('2 Entries');
     });
 
-    it('Dropdowns, checkboxes, radiobuttons interactions', async () => {
+    it('Dropdowns interactions', async () => {
         await browser.url('http://www.webdriveruniversity.com/Dropdown-Checkboxes-RadioButtons/index.html');
-        
+        let values = await $$("//select[@id='dropdowm-menu-1']/option");
+        console.log(values);
+        await expect(values.length).toBe(4);
+        await $("//select[@id='dropdowm-menu-1']").selectByIndex(1);
+        await expect(await $('#dropdowm-menu-1').getValue()).toBe('c#');      
+        await $('#dropdowm-menu-1').selectByAttribute('value','python')
+        const actual = await $('#dropdowm-menu-1').getValue()
+        await expect(actual).toEqual('python')
+    });
+
+    it('Radiobuttons interactions', async () => {
+        await browser.url('http://www.webdriveruniversity.com/Dropdown-Checkboxes-RadioButtons/index.html');
+        const radiobuttons = await $$("//form[@id='radio-buttons-selected-disabled']/input");
+        await expect(radiobuttons.length).toBe(3);
+        await expect (await $("[value='lettuce']").isSelected()).toBe(false);
+        await $("[value='lettuce']").click();
+        await expect(await $("[value='lettuce']").isSelected()).toBe(true);
+        await expect(await $("[value='cabbage']").isClickable()).toBe(false)
+        await browser.pause(3000)
+    });
+
+    it.only('Checkboxes interactions', async () => {
+        await browser.url('http://www.webdriveruniversity.com/Dropdown-Checkboxes-RadioButtons/index.html');
+        const checkboxes = await $$('[type=checkbox]');
+        await expect(checkboxes.length).toBe(4);
+        checkboxes.filter(async item => {
+            if(await item.getValue() === 'option-2') {
+                await item.click()
+                expect(await item.toBeChecked()).toBe(true)
+            }
+        });
+        await browser.pause(3000)
+
     });
 
 
