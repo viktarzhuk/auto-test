@@ -214,5 +214,20 @@ describe('Test to refresh the syntax', () => {
         }
     });
 
+    it.only('Hover over element on the page', async () => {
+        await browser.url('http://www.webdriveruniversity.com/Scrolling/index.html')
+        await $("//h1[text()='Scroll to me first!']").moveTo();
+        await expect(await $('#zone1')).toHaveText('Well done for scrolling to me!');
+        await $('#zone2').moveTo();
+        await $('#zone1').moveTo();
+        await $('#zone2').moveTo();
+        await expect($('#zone2-entries')).toHaveText('2 Entries');
+    });
+
+    it('Dropdowns, checkboxes, radiobuttons interactions', async () => {
+        await browser.url('http://www.webdriveruniversity.com/Dropdown-Checkboxes-RadioButtons/index.html');
+        
+    });
+
 
 });
