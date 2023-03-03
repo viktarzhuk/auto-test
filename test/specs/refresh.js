@@ -289,10 +289,10 @@ describe('Test to refresh the syntax', () => {
     //     await element.waitForClickable()
     //     await element.moveTo()
     //     await element.buttonDown()
-    //     await expect(await $('#click-box').getText()).toHaveText('Well done! keep holding that click now.....');
+    //     await expect(await element.getText()).toHaveText('Well done! keep holding that click now.....');
     //     await element.buttonUp()
     // });
 
-    
+
 
 });
