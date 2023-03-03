@@ -293,6 +293,5 @@ describe('Test to refresh the syntax', () => {
     //     await element.buttonUp()
     // });
 
-
-
+    
 });

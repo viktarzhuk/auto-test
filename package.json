@@ -31,6 +31,7 @@
     "chromedriver": "^109.0.0",
     "eslint": "^8.32.0",
     "eslint-plugin-wdio": "^8.0.14",
+    "supertest": "^6.3.3",
     "wdio-chromedriver-service": "^8.0.1"
   }
 }
