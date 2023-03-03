@@ -266,7 +266,7 @@ describe('Test to refresh the syntax', () => {
         await expect(target).toHaveText('Dropped!');
     });
 
-    it.only('Executing hover over elements in a sequence and asserting the browser alerts', async () => {
+    it('Executing hover over elements in a sequence and asserting the browser alerts', async () => {
         await browser.url('http://www.webdriveruniversity.com/Actions/index.html');
         await $("//button[text()='Hover Over Me First!']").moveTo();
         await $("//a[@class='list-alert'][1]").click();
@@ -283,5 +283,16 @@ describe('Test to refresh the syntax', () => {
         await browser.acceptAlert();
     });
 
+    // it('Click and hold left mouse button over element', async () => {
+    //     await browser.url('http://www.webdriveruniversity.com/Actions/index.html');
+    //     const element = await $('#click-box');
+    //     await element.waitForClickable()
+    //     await element.moveTo()
+    //     await element.buttonDown()
+    //     await expect(await $('#click-box').getText()).toHaveText('Well done! keep holding that click now.....');
+    //     await element.buttonUp()
+    // });
+
+    
 
 });
