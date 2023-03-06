@@ -38,7 +38,7 @@ describe('Users API', () => {
         })
     });
 
-    it.only('POST some data to create a new user',async () => {
+    it('POST some data to create a new user',async () => {
         const data = {
             email: faker.internet.email(), // create a data to POST to the server random email: `test-${Math.floor(Math.random()) * 9999}@mail.com`
             name: 'Test Name',
@@ -55,6 +55,20 @@ describe('Users API', () => {
             // expect(res.body.status).to.equal(data.status)
             
             expect(res.body).to.deep.include(data) // chai assertion for making deep equality comparison 
+        })
+    });
+
+    it.only('PUT update some data in users api', async () => {
+        const data = {
+           name: faker.name.firstName() 
+        }
+        await request
+        .put('users/839416')
+        .set('Authorization', `Bearer ${TOKEN}`)
+        .send(data)
+        .then(function(res) {
+            console.log(res.body)
+            expect(res.body).to.deep.include(data)
         })
     });
         
