@@ -42,12 +42,13 @@ describe('Delete users create -> update -> delete', () => {
         })
     });
 
-    it.only('DELETE remove the user',async () => {
+    it('DELETE remove the user',async () => {
         await request
         .delete(`users/${userID}`)
         .set('Authorization', `Bearer ${TOKEN}`)
         .then(function (res) {
-            expect(res.body).to.be.equal(null);
+            console.log(res.body)
+            expect(res.body).to.be.empty;
         })
     });
 });
