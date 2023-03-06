@@ -40,18 +40,21 @@ describe('Users API', () => {
 
     it.only('POST some data to create a new user',async () => {
         const data = {
-            email: faker.internet.email(),
+            email: faker.internet.email(), // create a data to POST to the server random email: `test-${Math.floor(Math.random()) * 9999}@mail.com`
             name: 'Test Name',
             gender: 'male',
             status: 'active'
         };
+
         await request.post('users')
         .set("Authorization", `Bearer ${TOKEN}`)
         .send(data)
         .then(function(res) {
             console.log(res.body)
-            expect(res.body.email).to.equal(data.email)
-            expect(res.body.status).to.equal(data.status)
+            // expect(res.body.email).to.equal(data.email)
+            // expect(res.body.status).to.equal(data.status)
+            
+            expect(res.body).to.deep.include(data) // chai assertion for making deep equality comparison 
         })
     });
         
