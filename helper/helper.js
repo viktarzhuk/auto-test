@@ -18,4 +18,5 @@ export const createRandomUser = async () => {
     .set('Authorization', `Bearer ${TOKEN}`)
     .send(userData)
      return  res.body.id;
+     
 };
