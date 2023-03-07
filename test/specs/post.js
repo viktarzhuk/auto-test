@@ -45,7 +45,7 @@ describe('User Posts', () => {
 
 /////////////////////////////NEGATIVE SCENARIOUS FOR APIs/////////////////////////////////
 
-describe.only('Negative tests', () => {
+describe('Negative tests', () => {
     
     it('401 Authentication failed - request without authentication token',async () => {
         const data = {
@@ -64,7 +64,7 @@ describe.only('Negative tests', () => {
     console.log(res)
     });
 
-    it.only('422 data validation failed - request without proper data in the body', async () => {
+    it('422 data validation failed - request without proper data in the body', async () => {
         const data = {
             field: "User",
             message: faker.lorem.paragraphs(1),
