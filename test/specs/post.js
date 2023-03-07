@@ -8,6 +8,7 @@ const TOKEN = 'c00377321ff01fc5c67198d192fe717f065acf09065c878e8a89896b2fda3776'
 describe('User Posts', () => {
     
     let postId; // create a postId to reuse in other tests 
+    
     it('POSTS /posts',async () => {
         
         const data = {
