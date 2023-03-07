@@ -61,7 +61,6 @@ describe('Negative tests', () => {
     .send(data);
      expect(res.status).to.equal(401)
      expect(res.text).to.equal('{"message":"Authentication failed"}')
-    console.log(res)
     });
 
     it('422 data validation failed - request without proper data in the body', async () => {
@@ -78,6 +77,5 @@ describe('Negative tests', () => {
     .send(data);
      expect(res.status).to.equal(422)
      expect(res.text).to.equal('[{"field":"body","message":"can\'t be blank"}]')
-    console.log(res)
     });
 });
