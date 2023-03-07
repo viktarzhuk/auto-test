@@ -9,6 +9,7 @@ describe('User Posts', () => {
     
     
     it('POSTS /posts',async () => {
+        let postId; // create a postId to reuse in other tests 
         const data = {
                 field: "User",
                 message: faker.lorem.paragraphs(1),
@@ -23,6 +24,7 @@ describe('User Posts', () => {
         .send(data)
         
         expect(res.body.user_id).to.equal(838476)
-        
+        postId = res.body.id // assign postId to the ID of the user that is created in this test
+        console.log(postId)
     });
 });
