@@ -11,19 +11,18 @@ describe('User Posts', () => {
     it('POSTS /posts',async () => {
         const data = {
                 field: "User",
-                message: "ZAL",
+                message: faker.lorem.paragraphs(1),
                 user_id: 838476,
                 title : "Argumentum ubi tolero est bis accipio voluptas temporibus decretum tempore temptatio titulus.",
                 body : "Ventosus ultio degero. Tum canonicus dens. Spoliatio credo surgo. Virtus suffoco tamquam."
         }
 
-        await request 
+       const res = await request 
         .post('posts')
         .set('Authorization', `Bearer ${TOKEN}`)
         .send(data)
-        .then(function(res) {
-            console.log(res.body)
-            expect(res.body.user_id).to.equal(838476)
-        })
+        
+        expect(res.body.user_id).to.equal(838476)
+        
     });
 });
