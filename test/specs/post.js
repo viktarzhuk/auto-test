@@ -7,9 +7,9 @@ const TOKEN = 'c00377321ff01fc5c67198d192fe717f065acf09065c878e8a89896b2fda3776'
 
 describe('User Posts', () => {
     
-    
+    let postId; // create a postId to reuse in other tests 
     it('POSTS /posts',async () => {
-        let postId; // create a postId to reuse in other tests 
+        
         const data = {
                 field: "User",
                 message: faker.lorem.paragraphs(1),
@@ -26,5 +26,12 @@ describe('User Posts', () => {
         expect(res.body.user_id).to.equal(838476)
         postId = res.body.id // assign postId to the ID of the user that is created in this test
         console.log(postId)
+    });
+
+    it('GET /posts/id from previous test', async () => {
+        await request 
+        .get(`posts/${postId}`)
+        .set('Authorization', `Bearer ${TOKEN}`)
+        .expect(200)
     });
 });
