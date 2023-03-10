@@ -80,7 +80,7 @@ describe('Test suite for amazon.com', () => {
         await expect($('#glow-ingress-line2')).toHaveText('Bahrain');
     });
 
-    it.only('Verify the dropdown with search categories on the global header nav menu', async () => {
+    it('Verify the dropdown with search categories on the global header nav menu', async () => {
         const searchDropdown = await $$('#searchDropdownBox > option');
         await expect(searchDropdown.length).toEqual(28);
         const expectedTitles = [
@@ -122,9 +122,33 @@ describe('Test suite for amazon.com', () => {
         await expect($('#nav-search-label-id')).toHaveText('Automotive')
     });
 
-    it('', () => {
-        
+    it('Verify that cliking logo on header nav menu redirects user to the main page', async () => {
+        await $('#nav-cart-count-container').waitForDisplayed();
+        await $('#nav-cart-count-container').click();
+        await expect($('.a-cardui-body.a-scroller-none h2')).toBeDisplayed();
+        await $('#nav-logo-sprites').click()
+        await $('.a-cardui-body.a-scroller-none h2').waitForDisplayed({reverse: true});
     });
+
+    it('Verify the page is scrolled up on clikcing "Back to top" button', async () => {
+        await $('#nav-search').waitForDisplayed();
+        await $('#nav-search').isDisplayedInViewport();
+        // await $("[aria-label='Back to top']").scrollIntoView();
+        const element = await $("//a[@id='navBackToTop']//span[@class='navFooterBackToTopText']");
+        await element.scrollIntoView({block: 'center', inline: 'center'})
+        await element.click();
+        await $('#nav-search').isDisplayedInViewport();
+    });
+
+    it('Verify search is available from the main page', async () => {
+        await $('#twotabsearchtextbox').setValue('iphone 14 pro');
+        await $('#nav-search-submit-button').click();
+        await $("li[id='p_n_feature_two_browse-bin/23949378011']").scrollIntoView({block:'center'});
+        // await browser.pause(4000)
+        await $("li[id='p_n_feature_two_browse-bin/23949378011']").isDisplayedInViewport()
+    });
+
+    
 });
 
 
