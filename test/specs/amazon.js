@@ -80,7 +80,51 @@ describe('Test suite for amazon.com', () => {
         await expect($('#glow-ingress-line2')).toHaveText('Bahrain');
     });
 
-    it('Verify the dropdown with search categories on the global header nav menu', async () => {
+    it.only('Verify the dropdown with search categories on the global header nav menu', async () => {
+        const searchDropdown = await $$('#searchDropdownBox > option');
+        await expect(searchDropdown.length).toEqual(28);
+        const expectedTitles = [
+            "All Departments",
+            "Arts & Crafts",
+            "Automotive",
+            "Baby",
+            "Beauty & Personal Care",
+            "Books",
+            "Boys' Fashion",
+            "Computers",
+            "Deals",
+            "Digital Music",
+            "Electronics",
+            "Girls' Fashion",
+            "Health & Household",
+            "Home & Kitchen",
+            "Industrial & Scientific",
+            "Kindle Store",
+            "Luggage",
+            "Men's Fashion",
+            "Movies & TV",
+            "Music, CDs & Vinyl",
+            "Pet Supplies",
+            "Prime Video",
+            "Software",
+            "Sports & Outdoors",
+            "Tools & Home Improvement",
+            "Toys & Games",
+            "Video Games",
+            "Women's Fashion",
+          ];
+        let textOfItems = [];    
+        for(let i = 0; i < searchDropdown.length; i++) {
+            await textOfItems.push(await searchDropdown[i].getText())
+        }
+        await expect(textOfItems).toEqual(expectedTitles)
+        await $('#searchDropdownBox').selectByAttribute('value', 'search-alias=automotive-intl-ship');
+        await expect($('#nav-search-label-id')).toHaveText('Automotive')
+    });
+
+    it('', () => {
         
     });
 });
+
+
